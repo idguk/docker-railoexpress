@@ -12,9 +12,8 @@ RUN rm -rf /var/railo/webapps/ROOT/*
 RUN rm -rf /tmp/railofiles
 WORKDIR ["/tmp"]
 RUN git clone https://github.com/idguk/railojars.git
+RUN mkdir -p /var/railo/lib/ext/railo-server/context/lib
 RUN mv railojars/*.jar /var/railo/lib/ext/railo-server/context/lib
 ENTRYPOINT ["/var/railo/start"]
-#What is difference between entry point and cmd? CMD can be overriden on image creation and can be executable and arguments ENTRYPOINT cant be overriden but cant take args but args at end of run command are passed to entry point process 
-#CMD ["/var/railo/start"]
-#expose jetty port
 EXPOSE 8888
+
